@@ -11,10 +11,9 @@ import com.myproject.itbru_online_shop.databinding.FragmentDashboardBinding
 
 class DashboardFragment : Fragment() {
 
-    private var _binding: FragmentDashboardBinding? = null
+    private lateinit var dashboardViewModel: DashboardViewModel
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
+    private var _binding: FragmentDashboardBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(

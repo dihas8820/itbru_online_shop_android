@@ -1,5 +1,6 @@
 package com.myproject.itbru_online_shop
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -9,6 +10,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.myproject.itbru_online_shop.databinding.ActivityNavigationBinding
+import com.myproject.itbru_online_shop.ui.login.LoginActivity
 import com.myproject.itbru_online_shop.ui.util.Prefs
 
 class NavigationActivity : AppCompatActivity() {
@@ -39,11 +41,14 @@ class NavigationActivity : AppCompatActivity() {
                 val s = Prefs(this)
                 if (s.getIsLogin()){
                     Log.d("TAG", "onCreate: Sudah Login")
+                    navController.navigate(it.itemId)
                 }else {
+                    startActivity(Intent(this, LoginActivity::class.java))
                     Log.d("TAG", "onCreate: Pindah ke menu login")
                 }
 
             }else{
+                navController.navigate(it.itemId)
                 Log.d("TAG", "onCreate: bubar" + it.itemId)
             }
             return@setOnItemSelectedListener true
